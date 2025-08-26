@@ -1,35 +1,20 @@
-// ===== Smooth Scroll for Contact Button =====
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-  anchor.addEventListener('click', function(e) {
-    e.preventDefault();
-    const target = document.querySelector(this.getAttribute('href'));
-    if(target) {
-      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }
+// ===== Resume Request Button =====
+const resumeBtn = document.getElementById('resume-btn');
+
+resumeBtn.addEventListener('click', () => {
+  // If you set up EmailJS, uncomment below and replace keys
+  /*
+  emailjs.send("YOUR_SERVICE_ID", "YOUR_TEMPLATE_ID", {
+      from_name: "Website Visitor",
+      to_email: "aakashbarasiya2001@gmail.com",
+      message: "A user requested access to your resume."
+  }).then(function(response) {
+      alert("Request sent! Check your Gmail.");
+  }, function(error) {
+      alert("Error sending request: " + error);
   });
-});
+  */
 
-// ===== Resume Download Confirmation =====
-const resumeBtn = document.querySelector('.about-buttons a[href*="drive.google.com"]');
-
-resumeBtn.addEventListener('click', function(e) {
-  e.preventDefault(); // prevent default link opening
-  const resumeLink = this.href;
-  const confirmDownload = confirm("Do you want to download my Resume?");
-  if(confirmDownload) {
-    window.open(resumeLink, "_blank"); // open resume in new tab
-  }
-});
-
-// ===== Social Icons Hover Animation =====
-const socialIcons = document.querySelectorAll('.about-social a');
-
-socialIcons.forEach(icon => {
-  icon.addEventListener('mouseenter', () => {
-    icon.style.transform = 'scale(1.2)';
-    icon.style.transition = 'transform 0.3s ease';
-  });
-  icon.addEventListener('mouseleave', () => {
-    icon.style.transform = 'scale(1)';
-  });
+  // Fallback for testing without EmailJS
+  alert("Request sent! Check your Gmail (EmailJS not configured yet).");
 });
